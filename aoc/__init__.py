@@ -13,9 +13,6 @@ level = os.environ.get('LOG_LEVEL') or logging.DEBUG
 logger.setLevel(level)
 handler = logging.StreamHandler()
 handler.setLevel(level)
-fmt = "%(levelname)s:%(name)s: %(message)s"
+fmt = "%(levelname)s:%(name)s %(lineno)d: %(message)s"
 handler.setFormatter(logging.Formatter(fmt))
 logger.addHandler(handler)
-
-if __name__ == '__main__':
-    print(aoc_root())

@@ -6,7 +6,6 @@ from aoc.utils import input_loader
 
 
 def solve(sample=False, window_size=1):
-    file = 'input.txt' if not sample else 'sample.txt'
     depth_list = list(map(int, input_loader.load_file_as_list(1, sample)))
 
     depth_increases = count_increases(depth_list, window_size)

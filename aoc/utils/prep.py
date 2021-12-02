@@ -1,7 +1,10 @@
+import logging
+import shutil
 from typing import Optional
 
 from aoc.puzzles import puzzles_path
-from aoc.utils.input_loader import get_day_input_path, logger, day_int_to_str
+from aoc.utils.input_loader import get_day_input_path
+from aoc.utils.consts import day_int_to_str, template_solve_file, INPUT_FILE, SAMPLE_FILE
 
 
 def prompt_bool(prompt, choices: Optional[dict]=None) -> bool:
@@ -14,15 +17,8 @@ def prompt_bool(prompt, choices: Optional[dict]=None) -> bool:
 
     return choices[choice]
 
-# def new_solver_template():
-#
-#     return (f"import os\n"
-#
-# os.environ['LOG_LEVEL'] = 'INFO'
-# from aoc import logger"
 
 def prepare_new_day(day: int):
-
     day = day_int_to_str(day)
     potential_input_path = get_day_input_path(day, raising=False)
     potential_puzzles_path = puzzles_path() / day
@@ -32,15 +28,19 @@ def prepare_new_day(day: int):
     elif potential_puzzles_path.is_dir():
         raise FileExistsError(potential_puzzles_path)
 
-    logger.info(f"Creating new day folders: \n{potential_puzzles_path}\n{potential_input_path}")
-    if prompt_bool("Is this okay?"):
+    prompt = f"Creating new day folders: \n{potential_puzzles_path}\n{potential_input_path}\nIs this okay?"
+    if prompt_bool(prompt):
         potential_puzzles_path.mkdir()
         (potential_puzzles_path / '__init__.py').touch()
-        (potential_puzzles_path / f'solve_{day}.py').touch()
-        new_solver_file = potential_puzzles_path / f'solve_{day}'
-        potential_input_path.mkdir()
 
+        template = template_solve_file()
+        new_solver_file = potential_puzzles_path / f'solve_{day}.py'
+        shutil.copy(template, new_solver_file)
+
+        potential_input_path.mkdir()
+        (potential_input_path / INPUT_FILE).touch()
+        (potential_input_path / SAMPLE_FILE).touch()
 
 
 if __name__ == '__main__':
-    prepare_new_day(2)
+    prepare_new_day(4)
