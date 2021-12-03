@@ -42,14 +42,6 @@ def solve(day, sample):
 
     logger.info(f'{life_support(oxy_rate, co2_rate)=}')
 
-# def to_int()
-#
-# def ox_gen_rating():
-#     # most common value in bit pos
-#     # if equal keep 1
-#     for bit in bits:
-#         if bit == 1 and
-#     pass
 
 def co2_rating():
     # least common
@@ -64,6 +56,7 @@ def to_int(bits):
     for i, bit in enumerate(reversed(bits)):
         value += bit*2**(i)
     return value
+
 
 def calc_rate2(numbers, type='oxy'):
 
@@ -105,16 +98,7 @@ def calc_rate(numbers, type='gamma'):
 
     return [0,0,0] + result
 
-# def decode(number):
-#
-#
-#     epsilon_rate =
-#     power = gamma_rate * epsilon_rate
-#
-#     return power
-
-
 if __name__ == '__main__':
     _day_num = int(Path(__file__).stem.split('_')[-1])
     # solve(_day_num, sample=False)
-    solve(_day_num, sample=False)
+    solve(_day_num, sample=True)
