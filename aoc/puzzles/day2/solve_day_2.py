@@ -29,5 +29,6 @@ def solve(day):
 def final(x, y):
     return x * y
 
+
 if __name__ == '__main__':
     solve(2)

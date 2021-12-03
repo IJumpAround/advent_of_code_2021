@@ -42,5 +42,11 @@ def prepare_new_day(day: int):
         (potential_input_path / SAMPLE_FILE).touch()
 
 
+def write_puzzle_input(day: int, content: str):
+    day = day_int_to_str(day)
+    input_path = get_day_input_path(day)
+    (input_path / INPUT_FILE).write_text(content, encoding='utf-8')
+
+
 if __name__ == '__main__':
-    prepare_new_day(4)
+    prepare_new_day(3)

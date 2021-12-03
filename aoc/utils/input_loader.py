@@ -6,6 +6,10 @@ logger = logging.getLogger(__name__)
 
 
 def get_day_input_path(day: str, raising: bool = True):
+    """Return path to input file for day
+
+    If raising and path doesn't exist, raise exception
+    """
     day_folder = input_root() / day
     try:
         assert day_folder.is_dir()
