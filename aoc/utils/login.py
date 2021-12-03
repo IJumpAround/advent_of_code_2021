@@ -14,27 +14,29 @@ def get_puzzle_input(day, year=2021):
     login_address = 'https://adventofcode.com/auth/github'
     options = Options()
     options.headless = True
-    driver = webdriver.Firefox(options)
+    driver = webdriver.Firefox(options=options)
 
-    driver.get(login_address)
+    try:
+        driver.get(login_address)
 
-    login_box = driver.find_element(by=By.ID, value='login_field')
-    password_box = driver.find_element(by=By.ID, value='password')
+        login_box = driver.find_element(by=By.ID, value='login_field')
+        password_box = driver.find_element(by=By.ID, value='password')
 
-    login_box.send_keys(os.environ["GIT_USERNAME"])
-    password_box.send_keys(os.environ["GIT_PASSWORD"])
+        login_box.send_keys(os.environ["GIT_USERNAME"])
+        password_box.send_keys(os.environ["GIT_PASSWORD"])
 
-    password_box.submit()
+        password_box.submit()
 
-    # wait for oauth redirect
-    wait = WebDriverWait(driver, 10)
-    wait.until(EC.title_contains("Advent"))
+        # wait for oauth redirect
+        wait = WebDriverWait(driver, 10)
+        wait.until(EC.title_contains("Advent"))
 
-    driver.get(f"https://adventofcode.com/{year}/day/{day}/input")
-    input_content = driver.find_element(by=By.TAG_NAME, value="pre")
+        driver.get(f"https://adventofcode.com/{year}/day/{day}/input")
+        input_content = driver.find_element(by=By.TAG_NAME, value="pre")
 
-    text = input_content.text
-    driver.quit()
+        text = input_content.text
+    finally:
+        driver.quit()
 
     return text
 
