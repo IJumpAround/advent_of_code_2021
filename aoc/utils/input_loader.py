@@ -1,4 +1,5 @@
 import logging
+import re
 
 from aoc.utils.consts import get_filename, day_int_to_str, input_root, INPUT_FILE
 
@@ -43,7 +44,7 @@ def load_file_as_string(day: int, sample: bool = False):
     return text
 
 
-def load_file_as_list(day, sample=False):
+def load_file_as_list(day, sample=False, line_as_list=False):
     day = day_int_to_str(day)
     filename = get_filename(sample)
 
@@ -51,5 +52,13 @@ def load_file_as_list(day, sample=False):
 
     lines = file.splitlines()
 
+    if line_as_list:
+        new_lines = []
+        for line in lines:
+            # re.split(r'\s+', line)
+            line = [ch for ch in line.split()]
+            new_lines.append(line)
+        lines = new_lines
+
     logger.debug(f"File list content: \n{lines}\n")
-    return file.splitlines()
+    return lines
