@@ -16,12 +16,14 @@ def sum_unmarked(board) -> int:
 
     return total
 
+
 def mark_board(board, value):
     value = int(value)
     for row in range(len(board)):
         for col, val in enumerate(board[row]):
             if val != 'x' and val == value:
                 board[row][col] = 'x'
+
 
 def mark_boards(boards, value):
     for board in boards:
@@ -46,7 +48,6 @@ def check_board(board):
         else:
             return board
 
-
     for x in range(len(board)):
         col = []
         for y in range(len(board[x])):
@@ -58,7 +59,6 @@ def check_board(board):
             continue
         else:
             return board
-
 
 
 def solve(day, sample):
@@ -84,7 +84,7 @@ def solve(day, sample):
     boards.append(board)
     for board in boards:
         pprint(board)
-    print('draw: ',draw_order)
+    print('draw: ', draw_order)
 
     num_boards = len(boards)
     winner = None
@@ -121,7 +121,6 @@ def solve(day, sample):
     print('last called ', last_called)
     answer = unmarked * last_called
     print(f"The answer is {answer}\n")
-
 
     return answer
 
