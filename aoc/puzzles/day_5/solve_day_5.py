@@ -2,24 +2,18 @@ import os
 from pathlib import Path
 
 from aoc.utils.consts import SAMPLE_FILE, INPUT_FILE
+from aoc.utils.measurement import time_fn
 
 os.environ['LOG_LEVEL'] = 'DEBUG'
 from aoc import logger
 from aoc.utils import input_loader
-#
-#
-# def bounds(coords):
-#
-#     for coord in coords:
 
 
-
+@time_fn
 def solve(day, sample, diag=True):
     logger.info(f"Running with {SAMPLE_FILE if sample else INPUT_FILE}")
-    answer = None
 
     list_input = input_loader.load_file_as_list(day, sample)
-
 
     coords_l = []
     coords_r = []
@@ -123,7 +117,6 @@ def sort_pair(l, r, horiz=True):
             return r, l
 
     return l, r
-
 
 
 if __name__ == '__main__':
