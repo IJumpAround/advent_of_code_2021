@@ -2,12 +2,16 @@ import os
 from pathlib import Path
 
 from aoc.utils.consts import SAMPLE_FILE, INPUT_FILE
+from aoc.utils.measurement import time_fn
 
 os.environ['LOG_LEVEL'] = 'INFO'
 from aoc import logger
 from aoc.utils import input_loader
 
 L = logger
+
+
+@time_fn
 def solve(day, sample):
     L.info(f"Running with {SAMPLE_FILE if sample else INPUT_FILE}")
     answer = None
