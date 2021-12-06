@@ -3,6 +3,7 @@ from pathlib import Path
 from pprint import pprint
 
 from aoc.utils.consts import SAMPLE_FILE, INPUT_FILE
+from aoc.utils.measurement import time_fn
 
 os.environ['LOG_LEVEL'] = 'DISABLED'
 from aoc import logger
@@ -60,7 +61,7 @@ def check_board(board):
         else:
             return board
 
-
+@time_fn
 def solve(day, sample):
     logger.info(f"Running with {SAMPLE_FILE if sample else INPUT_FILE}")
     answer = None
