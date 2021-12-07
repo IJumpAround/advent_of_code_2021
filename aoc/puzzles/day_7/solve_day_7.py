@@ -26,9 +26,6 @@ def solve(day, sample):
     for c in crab_subs:
         C[c] += 1
 
-    # Cost = {i:0 for i in range(min(C), min(C) + max(C))}
-    # cost =
-    # Cost = defaultdict(int)
     Cost = [0 for _ in range(min(C), min(C) + max(C))]
 
     print(Cost)
@@ -40,13 +37,11 @@ def solve(day, sample):
     L.info(f'cost {Cost}')
     # L.info(f"The answer is {answer}\n")
     cost = min(Cost)
-    pos = Cost.index(cost)
 
-    answer = pos
     print(answer,cost)
-    return answer
+    return cost
 
 if __name__ == '__main__':
     _day_num = int(Path(__file__).stem.split('_')[-1])
     # solve(_day_num, sample=True)
-    solve(_day_num, sample=False)
+    assert solve(_day_num, sample=False) == 96987874
