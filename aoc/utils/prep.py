@@ -48,4 +48,4 @@ def write_puzzle_input(day: int, content: str):
 
 
 if __name__ == '__main__':
-    prepare_new_day(7)
+    prepare_new_day(8)
