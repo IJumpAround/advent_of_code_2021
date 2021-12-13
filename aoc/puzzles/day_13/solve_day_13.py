@@ -62,7 +62,7 @@ def solve(day, sample, num_folds):
 
     folded_mtx = [['.' for _ in range(W+1)] for __ in range(H+1)]
     for fn, fold in enumerate(folds):
-        if fn == num_folds - 1:
+        if fn == num_folds:
             break
         axis, value  = fold
         new_bound = value
@@ -126,5 +126,6 @@ def solve(day, sample, num_folds):
 
 if __name__ == '__main__':
     _day_num = int(Path(__file__).stem.split('_')[-1])
-    solve(_day_num, False, -1)
+    assert solve(_day_num, False, 1) == 607
+    solve(_day_num, False, -1)  # letters are CPZLPFZL
     # solve(_day_num, sample=False)
