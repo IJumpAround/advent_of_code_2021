@@ -1,4 +1,3 @@
-import copy
 import os
 import time
 from collections import defaultdict
@@ -94,17 +93,14 @@ def solve(day, sample):
     list_input = input_loader.load_file_as_list(day, sample)
 
     vertices = []
-    for line in list_input:
-        vertices.append(line.split('-'))
-
-    # build adjacency list
     adj_list = defaultdict(list)
-    for v in vertices:
-        s, e = v
-
+    for line in list_input:
+        # vertices.append(line.split('-'))
+        s, e = line.split('-')
         adj_list[s].append(e)
         if s not in adj_list[e]:
             adj_list[e].append(s)
+
     print(adj_list)
 
     paths = explore('start', adj_list)
