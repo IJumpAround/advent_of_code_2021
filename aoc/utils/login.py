@@ -42,7 +42,7 @@ def get_puzzle_input(day, year=2021):
 
 
 if __name__ == '__main__':
-    day_of = 13
+    day_of = 14
     input_text = get_puzzle_input(day_of)
     prep.write_puzzle_input(day_of, input_text)
     print(input_text)
