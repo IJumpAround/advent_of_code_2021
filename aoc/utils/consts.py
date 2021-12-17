@@ -8,7 +8,13 @@ SAMPLE_FILE = 'sample.txt'
 
 
 def get_filename(sample=False):
-    return INPUT_FILE if not sample else SAMPLE_FILE
+    if not sample:
+        return INPUT_FILE
+    elif sample == 2:
+        f = Path(SAMPLE_FILE)
+        return f.stem + '_p2' + f.suffix
+    else:
+        return INPUT_FILE if not sample else SAMPLE_FILE
 
 
 def day_int_to_str(day: int) -> str:
